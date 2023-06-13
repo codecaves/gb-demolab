@@ -72,6 +72,6 @@ void main(void) {
     
     const char *greeting = "This is a test";
     uint8_t len = strlen(greeting);
-    //draw_text(greeting, len);
+    draw_text(greeting, len);
 
 }
