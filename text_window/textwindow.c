@@ -21,6 +21,7 @@ void draw_screen() {
     
     set_win_tiles(0, 0, TEXT_MAP_WIDTH, TEXT_MAP_HEIGHT, text_map);
     uint8_t *win_vram_origin = get_win_xy_addr(1, 1);
+    uint8_t *win_vram_bottom = get_win_xy_addr(1, 2);
 
     // Hello world
     set_vram_byte(win_vram_origin+0, 0x09);
@@ -34,6 +35,11 @@ void draw_screen() {
     set_vram_byte(win_vram_origin+8, 0x2d);
     set_vram_byte(win_vram_origin+9, 0x27);
     set_vram_byte(win_vram_origin+10, 0x1f);
+
+    // 1234567890
+    for (uint8_t i = 0, base = 0x36; i < 10; ++i) {
+        set_vram_byte(win_vram_bottom + i, base + i);
+    }
 
     // Shift the window to the bottom of the screen so it doesn't
     // cover the background layer completely
